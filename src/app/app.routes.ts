@@ -12,6 +12,8 @@ export const routes: Routes =
         path: 'home', component: Home,
     },
 
+
+
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirección inicial
 
 ];

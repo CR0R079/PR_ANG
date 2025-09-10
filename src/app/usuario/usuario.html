@@ -1,209 +1,24 @@
-<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
-  <div class="flex-grow">
-    <!-- Header -->
-    <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-700/50 px-10 py-4">
-      <div class="flex items-center gap-4 text-white">
-        <svg class="size-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_6_319)">
-            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
-          </g>
-          <defs>
-            <clipPath id="clip0_6_319">
-              <rect fill="white" height="48" width="48"></rect>
-            </clipPath>
-          </defs>
-        </svg>
-        <h2 class="text-xl font-bold tracking-tight">Acme Co</h2>
-      </div>
-      
-      <nav class="hidden md:flex items-center gap-8">
+<nav class="navbar">
+  <a class="navbar-brand" href="#">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarUsuario"
+     aria-controls="navbarUsuario" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarUsuario">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
         <a class="nav-link" href="#">Usuario</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Contrato</a>
-        <a class="nav-link" href="#">Boleta de Pago</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Nomina</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Reclamos</a>
-      </nav>
-      
-      <div class="flex items-center gap-4">
-        <div class="profile-avatar" [style.background-image]="'url(' + userAvatarUrl + ')'"></div>
-        <button class="md:hidden">
-          <span class="material-symbols-outlined text-3xl">menu</span>
-        </button>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="px-4 sm:px-10 py-12 md:px-20 lg:px-28">
-      <div class="mx-auto max-w-7xl">
-        
-        <!-- User Profile Header -->
-        <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
-          <div class="relative group">
-            <div class="profile-main-avatar" [style.background-image]="'url(' + userMainAvatarUrl + ')'"></div>
-            <button class="avatar-edit-btn">
-              <span class="material-symbols-outlined">photo_camera</span>
-            </button>
-          </div>
-          
-          <div class="flex flex-col gap-2 pt-4 w-full">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tight">{{ user.fullName }}</h1>
-                <p class="text-gray-400 text-lg">{{ user.position }}</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <button class="btn-primary">
-                  <span class="material-symbols-outlined">edit</span>
-                  <span class="truncate">Editar Perfil</span>
-                </button>
-                <button class="btn-secondary">
-                  <span class="material-symbols-outlined">description</span>
-                  <span class="truncate">Ver Planilla</span>
-                </button>
-              </div>
-            </div>
-            
-            <!-- Quick Info Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <span class="material-symbols-outlined text-primary text-3xl">badge</span>
-                </div>
-                <div>
-                  <p class="text-gray-400 text-sm">DNI</p>
-                  <p class="font-semibold">{{ user.dni }}</p>
-                </div>
-              </div>
-              
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <span class="material-symbols-outlined text-primary text-3xl">phone</span>
-                </div>
-                <div>
-                  <p class="text-gray-400 text-sm">Teléfono</p>
-                  <p class="font-semibold">{{ user.phone }}</p>
-                </div>
-              </div>
-              
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <span class="material-symbols-outlined text-primary text-3xl">cake</span>
-                </div>
-                <div>
-                  <p class="text-gray-400 text-sm">Fecha de Nacimiento</p>
-                  <p class="font-semibold">{{ user.birthDate }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Main Content Grid -->
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-          
-          <!-- General Information Form -->
-          <div class="xl:col-span-2">
-            <div class="form-container">
-              <h2 class="text-2xl font-bold mb-6">Información General</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                
-                <div class="input-group">
-                  <label class="input-label">Nombre</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.firstName" />
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">Apellido</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.lastName" />
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">Género</label>
-                  <select class="input-field" [(ngModel)]="usuario.gender">
-                    <option value="femenino">Femenino</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">Dirección</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.address" />
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">Ciudad</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.city" />
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">Código Postal</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.postalCode" />
-                </div>
-                
-                <div class="input-group">
-                  <label class="input-label">País</label>
-                  <input class="input-field" type="text" [(ngModel)]="usuario.country" />
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- Sidebar -->
-          <div class="space-y-8">
-            
-            <!-- Work Information Card -->
-            <div class="info-container">
-              <h3 class="font-bold text-lg mb-4">Información Laboral</h3>
-              <div class="space-y-3">
-                <div class="info-row">
-                  <span class="text-gray-400">Departamento</span>
-                  <span class="font-semibold">{{ workInfo.department }}</span>
-                </div>
-                <div class="info-row">
-                  <span class="text-gray-400">Fecha de Ingreso</span>
-                  <span class="font-semibold">{{ workInfo.startDate }}</span>
-                </div>
-                <div class="info-row">
-                  <span class="text-gray-400">Tipo de Contrato</span>
-                  <span class="font-semibold">{{ workInfo.contractType }}</span>
-                </div>
-                <div class="info-row">
-                  <span class="text-gray-400">Horario</span>
-                  <span class="font-semibold">{{ workInfo.schedule }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Progress Card -->
-            <div class="info-container">
-              <h3 class="font-bold text-lg mb-4">Progreso</h3>
-              <div class="relative size-40 mx-auto">
-                <svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="stroke-current text-gray-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
-                  <g class="origin-center -rotate-90 transform">
-                    <circle 
-                      class="stroke-current text-primary" 
-                      cx="18" 
-                      cy="18" 
-                      fill="none" 
-                      r="16" 
-                      stroke-dasharray="100" 
-                      [attr.stroke-dashoffset]="100 - progressPercentage" 
-                      stroke-width="3">
-                    </circle>
-                  </g>
-                </svg>
-                <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                  <span class="text-center text-2xl font-bold text-white">{{ progressPercentage }}%</span>
-                </div>
-              </div>
-              <p class="text-center text-gray-400 mt-2 text-sm">Perfil completado</p>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </main>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>

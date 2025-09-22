@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -8,6 +10,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login {
-
+export class Login 
+{
 }

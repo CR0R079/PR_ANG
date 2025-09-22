@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-Register',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './registrar.html',
-  styleUrl: './registrar.css',
+  styleUrls: ['./registrar.css']
 })
+
+
 export class Register{}
